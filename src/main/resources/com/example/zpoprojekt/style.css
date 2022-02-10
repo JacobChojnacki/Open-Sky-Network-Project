@@ -1,0 +1,23 @@
+.root {
+    -fx-background-image: url('background.jpg');
+    -fx-background-size: cover;
+}
+.container{
+    -fx-background-color: rgba(255,255,255,0.2);
+    -fx-background-radius: 10;
+}
+
+.button{
+    -fx-background-color: rgba(255,255,255,0.2);
+    -fx-background-radius: 10;
+}
+.button:hover{
+    -fx-background-color: #e94e50;
+    -fx-background-radius: 20;
+}
+.label{
+    -fx-font-family: "Times New Roman", Times;
+}
+.line-color{
+    -fx-background-color: #ffffff;
+}
