@@ -21,3 +21,22 @@
 .line-color{
     -fx-background-color: #ffffff;
 }
+.chart{
+    -fx-background-color: transparent;
+}
+.axis-label{
+    -fx-text-fill: #fff;
+}
+.chart-plot-background{
+    -fx-background-color: transparent;
+}
+
+.table-row-cell:hover {
+    -fx-background-color: #ffffff;
+    -fx-text-background-color: red;
+}
+
+
+.default-color0.chart-series-line { -fx-stroke: #238591; }
+.default-color1.chart-series-line { -fx-stroke: #e5d849; }
+.default-color2.chart-series-line { -fx-stroke: #ed4d51; }

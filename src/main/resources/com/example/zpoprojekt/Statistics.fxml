@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<SplitPane dividerPositions="0.8618090452261307" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.zpoprojekt.StatisticsController">
+  <items>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+         <children>
+            <BarChart fx:id="statisticsPlot" layoutY="59.0" prefHeight="281.0" prefWidth="600.0" stylesheets="@style.css">
+              <xAxis>
+                <CategoryAxis fx:id="aircraftColumn" animated="false" label="aircraft" side="BOTTOM" stylesheets="@style.css" tickLabelFill="WHITE" tickLabelRotation="90.0">
+                     <tickLabelFont>
+                        <Font size="7.0" />
+                     </tickLabelFont></CategoryAxis>
+              </xAxis>
+              <yAxis>
+                <NumberAxis fx:id="timeColumn" forceZeroInRange="false" prefHeight="292.0" prefWidth="43.0" side="LEFT" styleClass="axis-label" tickLabelFill="WHITE" />
+              </yAxis>
+               <styleClass>
+                  <String fx:value="default-color0" />
+                  <String fx:value="chart-plot-backgroud" />
+               </styleClass>
+            </BarChart>
+            <VBox alignment="TOP_CENTER" layoutX="1.0" prefHeight="63.0" prefWidth="598.0">
+               <children>
+                  <Label text="Statistic of flight time for departures" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <HBox alignment="CENTER" prefHeight="43.0" prefWidth="591.0" spacing="5.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Airport" />
+                        <TextField fx:id="airportEDX" alignment="CENTER" promptText="ICAO np.EDDF" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Begin" />
+                        <TextField fx:id="beginTimeEDX" alignment="CENTER" promptText="Y-M-D G:M" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="End" />
+                        <TextField fx:id="endTimeEDX" alignment="CENTER" promptText="Y-M-D G:M" />
+                        <ChoiceBox fx:id="selectBox" minHeight="-Infinity" minWidth="-Infinity" prefWidth="120.0" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children></AnchorPane>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="59.0" prefWidth="211.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="52.0" prefWidth="600.0" spacing="40.0">
+               <children>
+                  <Button fx:id="drawButton" mnemonicParsing="false" onAction="#drawButtonClicked" prefHeight="25.0" prefWidth="140.0" text="Draw" textFill="WHITE" />
+                  <Button fx:id="resetButton" mnemonicParsing="false" onAction="#resetButtonClicked" prefHeight="25.0" prefWidth="140.0" text="Reset" textFill="WHITE" />
+                  <Button fx:id="returnButton" mnemonicParsing="false" onAction="#returnButtonClicked" prefHeight="25.0" prefWidth="140.0" text="Return" textFill="WHITE" />
+               </children>
+            </HBox>
+         </children></AnchorPane>
+  </items>
+</SplitPane>
