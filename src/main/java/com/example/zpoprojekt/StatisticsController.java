@@ -60,6 +60,7 @@ public class StatisticsController extends SearchingViewController {
 
     /**
      * The method responsible for drawing the graph when the drawButton is clicked
+     *
      * @param event
      * @throws IOException
      */
@@ -67,28 +68,26 @@ public class StatisticsController extends SearchingViewController {
     void drawButtonClicked(ActionEvent event) throws IOException {
         try {
             if (airportEDX.getText() != null && beginTimeEDX.getText() != null && endTimeEDX.getText() != null) {
-                    String icao = airportEDX.getText();
-                    long unixBeginTime = unixTime(beginTimeEDX.getText());
-                    long unixEndTime = unixTime(endTimeEDX.getText());
-                    if(selectBox.getValue().equals("Departures")){
-                        flightData = openSkyNetwork.getDepartures(icao, unixBeginTime, unixEndTime);
-                    }
-                    else if(selectBox.getValue().equals("Arrivals")){
-                        flightData = openSkyNetwork.getArrival(icao, unixBeginTime, unixEndTime);
-                    }
-                    else {
-                        alertLoader("Arrivals/Departures error", "Choose direction!");
-                    }
-                    if (flightData == null) {
-                        alertLoader("Flights Data Error", "There were no flights at this time");
-                    }
-                    flightDataList.addAll(Arrays.asList(flightData));
-                    flightDataList.removeIf(x -> x.getMinutes() < 0 | x.getMinutes() > 1000);
-                    XYChart.Series series = new XYChart.Series();
-                    for (int i = 0; i < flightDataList.size(); i++) {
-                        series.getData().add(new XYChart.Data(flightDataList.get(i).getIcao24(), flightDataList.get(i).getMinutes()));
-                    }
-                    statisticsPlot.getData().add(series);
+                String icao = airportEDX.getText();
+                long unixBeginTime = unixTime(beginTimeEDX.getText());
+                long unixEndTime = unixTime(endTimeEDX.getText());
+                if (selectBox.getValue().equals("Departures")) {
+                    flightData = openSkyNetwork.getDepartures(icao, unixBeginTime, unixEndTime);
+                } else if (selectBox.getValue().equals("Arrivals")) {
+                    flightData = openSkyNetwork.getArrival(icao, unixBeginTime, unixEndTime);
+                } else {
+                    alertLoader("Arrivals/Departures error", "Choose direction!");
+                }
+                if (flightData == null) {
+                    alertLoader("Flights Data Error", "There were no flights at this time");
+                }
+                flightDataList.addAll(Arrays.asList(flightData));
+                flightDataList.removeIf(x -> x.getMinutes() < 0 | x.getMinutes() > 1000);
+                XYChart.Series series = new XYChart.Series();
+                for (FlightData data : flightDataList) {
+                    series.getData().add(new XYChart.Data(data.getIcao24(), data.getMinutes()));
+                }
+                statisticsPlot.getData().add(series);
             } else {
                 System.out.println("XD");
                 alertLoader("Empty data error", "Fields with airport and datetime cannot be empty");
@@ -102,6 +101,7 @@ public class StatisticsController extends SearchingViewController {
 
     /**
      * The method that close Statistics.fxml and returns to StartingMenu.fxml
+     *
      * @param event
      */
     @FXML
@@ -113,6 +113,7 @@ public class StatisticsController extends SearchingViewController {
 
     /**
      * The method that reset the BarChart.
+     *
      * @param event
      */
     @FXML
@@ -134,6 +135,7 @@ public class StatisticsController extends SearchingViewController {
 
     /**
      * The methods that convert date format to UnixTime format
+     *
      * @param fullTime - String
      * @return time in UnixTime format
      */
